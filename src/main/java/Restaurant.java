@@ -63,7 +63,18 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-
+    public int getPriceOfItem(List<Item> items) {
+        int price = 0;
+        for (Item item: items) {
+            price += menu
+                    .stream()
+                    .filter(m -> m.getName() == item.getName())
+                    .findAny()
+                    .get()
+                    .getPrice();
+        }
+        return price;
+    }
 
 }
 
